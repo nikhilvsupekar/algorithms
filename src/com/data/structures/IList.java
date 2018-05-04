@@ -12,8 +12,10 @@ public interface IList<T> {
 
     public void removeElement(T t);
 
-    public void removeElement(int position) throws LinkedListIndexOutOfBoundsException;
+    public void removeElementByPosition(int position) throws LinkedListIndexOutOfBoundsException;
 
     public int getElementPosition(T t);
+
+    public T getElementByPosition(int position) throws LinkedListIndexOutOfBoundsException;
 
 }

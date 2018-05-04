@@ -1,6 +1,7 @@
 package com.data.structures;
 
 import com.data.exceptions.LinkedListIndexOutOfBoundsException;
+import javafx.util.Pair;
 
 public class LinkedList<T> implements IList<T> {
 
@@ -92,7 +93,7 @@ public class LinkedList<T> implements IList<T> {
 
     }
 
-    public void removeElement(int position) throws LinkedListIndexOutOfBoundsException {
+    public void removeElementByPosition(int position) throws LinkedListIndexOutOfBoundsException {
         if ((head == null && position >= 0) || position < 0) {
             throw new LinkedListIndexOutOfBoundsException();
         } else if (position == 0) {
@@ -141,5 +142,25 @@ public class LinkedList<T> implements IList<T> {
         }
 
         return currentNode;
+    }
+
+    public T getElementByPosition(int position) throws LinkedListIndexOutOfBoundsException {
+        if ((head == null && position >= 0) || position < 0) {
+            throw new LinkedListIndexOutOfBoundsException();
+        } else {
+            LinkedListNode<T> currentNode = head;
+            int currentPosition = 0;
+
+            while (currentNode != null && currentPosition != position) {
+                currentNode = currentNode.getNextNode();
+                currentPosition++;
+            }
+
+            if (currentNode == null) {
+                throw new LinkedListIndexOutOfBoundsException();
+            } else {
+                return currentNode.getData();
+            }
+        }
     }
 }
