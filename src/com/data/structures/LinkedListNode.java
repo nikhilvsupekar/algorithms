@@ -23,7 +23,7 @@ public class LinkedListNode<T> {
         this.data = data;
     }
 
-    public LinkedListNode getNextNode() {
+    public LinkedListNode<T> getNextNode() {
         return nextNode;
     }
 

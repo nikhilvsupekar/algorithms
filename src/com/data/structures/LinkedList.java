@@ -67,15 +67,64 @@ public class LinkedList<T> implements IList<T> {
     }
 
     public void removeElement(T t) {
+        if (head == null) {
+            return;
+        }
+
+        if (head.getNextNode() == null && head.getData().equals(t)) {
+            head = null;
+        } else {
+            LinkedListNode currentNode = head;
+            while (currentNode.getNextNode() != null && !currentNode.getNextNode().getData().equals(t)) {
+                currentNode = currentNode.getNextNode();
+            }
+
+            if (currentNode.getNextNode() == null) {
+                return;
+            }
+
+            if (currentNode.getNextNode().getData().equals(t)) {
+                LinkedListNode nextNode = currentNode.getNextNode().getNextNode();
+                currentNode.setNextNode(nextNode);
+            }
+
+        }
 
     }
 
-    public void removeElement(int position) {
-
+    public void removeElement(int position) throws LinkedListIndexOutOfBoundsException {
+        if ((head == null && position >= 0) || position < 0) {
+            throw new LinkedListIndexOutOfBoundsException();
+        } else if (position == 0) {
+            head = head.getNextNode();
+        } else {
+            LinkedListNode prevNode = getLinkedListNodeByPosition(position - 1);
+            if (prevNode == null) {
+                throw new LinkedListIndexOutOfBoundsException();
+            } else {
+                if (prevNode.getNextNode().getNextNode() == null) {
+                    prevNode.setNextNode(null);
+                } else {
+                    prevNode.setNextNode(prevNode.getNextNode().getNextNode());
+                }
+            }
+        }
     }
 
     public int getElementPosition(T t) {
-        return 0;
+        LinkedListNode currentNode = head;
+        int currentPosition = 0;
+
+        while (currentNode != null) {
+            if (currentNode.getData().equals(t)) {
+                return currentPosition;
+            }
+
+            currentNode = currentNode.getNextNode();
+            currentPosition++;
+        }
+
+        return -1;
     }
 
     private LinkedListNode getLinkedListNodeByPosition(int position) {
