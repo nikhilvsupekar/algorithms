@@ -1,72 +1,58 @@
-package com.data.structures;
+package com.data.structures.lists;
 
-import com.data.structures.lists.IList;
-import com.data.structures.lists.LinkedList;
+import com.data.exceptions.ListIndexOutOfBoundsException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class LinkedListTest {
+public class ArrayListTest {
     @Test
-    public void getElementByPosition() throws Exception {
+    public void getSize() throws Exception {
+        IList<Integer> list = new ArrayList<>();
 
-        IList<Integer> list = new LinkedList<>();
+        assertEquals(0, list.getSize());
+
+        list.addElement(1);
+
+        assertEquals(1, list.getSize());
+
+        list.addElement(2);
+        list.addElement(3);
+
+        assertEquals(3, list.getSize());
+    }
+
+    @Test
+    public void addElement() throws ListIndexOutOfBoundsException {
+        IList<Integer> list = new ArrayList<>();
 
         list.addElement(1);
         assertEquals(1, (int)list.getElementByPosition(0));
 
         list.addElement(2);
+        assertEquals(2, (int)list.getElementByPosition(1));
+
         list.addElement(3);
         assertEquals(3, (int)list.getElementByPosition(2));
     }
 
-    @org.junit.Test
-    public void getSize() throws Exception {
+    @Test
+    public void addElement1() throws ListIndexOutOfBoundsException {
+        IList<Integer> list = new ArrayList<>();
 
-        IList<Integer> list = new LinkedList<>();
-
-        assertEquals(list.getSize(), 0);
-
-        list.addElement(1);
-        list.addElement(2);
-        list.addElement(2);
-        list.addElement(-4);
-
-        assertEquals(list.getSize(), 4);
-    }
-
-    @org.junit.Test
-    public void addElement() throws Exception {
-
-        IList<Integer> list = new LinkedList<>();
-
-        list.addElement(1);
-        list.addElement(2);
-
-        assertEquals(1, (int)list.getElementByPosition(0));
-        assertEquals(2, (int)list.getElementByPosition(1));
-    }
-
-    @org.junit.Test
-    public void addElement1() throws Exception {
-
-        IList<Integer> list = new LinkedList<>();
         list.addElement(1);
         list.addElement(2);
 
         list.addElement(3, 1);
         assertEquals(3, (int)list.getElementByPosition(1));
 
-        list.addElement(4, 0);
-        assertEquals(4, (int)list.getElementByPosition(0));
-
-        list.addElement(5, 3);
-        assertEquals(5, (int)list.getElementByPosition(3));
+        list.addElement(4, 3);
+        assertEquals(4, (int)list.getElementByPosition(3));
     }
 
-    @org.junit.Test
+    @Test
     public void removeElement() throws Exception {
-        IList<Integer> list = new LinkedList<>();
+        IList<Integer> list = new ArrayList<>();
         list.addElement(1);
         list.addElement(2);
 
@@ -80,9 +66,9 @@ public class LinkedListTest {
         assertEquals(4, (int)list.getElementByPosition(1));
     }
 
-    @org.junit.Test
+    @Test
     public void removeElementByPosition() throws Exception {
-        IList<Integer> list = new LinkedList<>();
+        IList<Integer> list = new ArrayList<>();
         list.addElement(1);
         list.addElement(2);
         list.addElement(3);
@@ -94,9 +80,9 @@ public class LinkedListTest {
         assertEquals(1, (int)list.getElementByPosition(0));
     }
 
-    @org.junit.Test
+    @Test
     public void getElementPosition() throws Exception {
-        IList<Integer> list = new LinkedList<>();
+        IList<Integer> list = new ArrayList<>();
         list.addElement(1);
         list.addElement(2);
         list.addElement(3);
@@ -104,6 +90,18 @@ public class LinkedListTest {
         assertEquals(0, list.getElementPosition(1));
         assertEquals(1, list.getElementPosition(2));
         assertEquals(2, list.getElementPosition(3));
+    }
+
+    @Test
+    public void getElementByPosition() throws Exception {
+        IList<Integer> list = new ArrayList<>();
+
+        list.addElement(1);
+        assertEquals(1, (int)list.getElementByPosition(0));
+
+        list.addElement(2);
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(2));
     }
 
 }
