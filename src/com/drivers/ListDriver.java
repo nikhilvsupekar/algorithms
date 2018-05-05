@@ -1,8 +1,8 @@
 package com.drivers;
 
 import com.data.exceptions.LinkedListIndexOutOfBoundsException;
-import com.data.structures.IList;
-import com.data.structures.LinkedList;
+import com.data.structures.lists.IList;
+import com.data.structures.lists.LinkedList;
 
 public class ListDriver {
 

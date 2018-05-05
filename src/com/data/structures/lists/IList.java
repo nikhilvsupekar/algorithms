@@ -1,4 +1,4 @@
-package com.data.structures;
+package com.data.structures.lists;
 
 import com.data.exceptions.LinkedListIndexOutOfBoundsException;
 

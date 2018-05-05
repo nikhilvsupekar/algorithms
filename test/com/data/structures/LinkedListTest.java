@@ -1,5 +1,7 @@
 package com.data.structures;
 
+import com.data.structures.lists.IList;
+import com.data.structures.lists.LinkedList;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

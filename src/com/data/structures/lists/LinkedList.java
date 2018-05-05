@@ -1,7 +1,6 @@
-package com.data.structures;
+package com.data.structures.lists;
 
 import com.data.exceptions.LinkedListIndexOutOfBoundsException;
-import javafx.util.Pair;
 
 public class LinkedList<T> implements IList<T> {
 
