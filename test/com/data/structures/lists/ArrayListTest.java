@@ -7,6 +7,68 @@ import static org.junit.Assert.*;
 
 public class ArrayListTest {
     @Test
+    public void setElementByPosition() throws Exception {
+        IList<Integer> list = new ArrayList<>();
+
+        list.addElement(1);
+        list.addElement(1);
+        list.addElement(1);
+
+        list.setElementByPosition(3, 0);
+        assertEquals(3, (int)list.getElementByPosition(0));
+
+        list.setElementByPosition(2, 1);
+        assertEquals(2, (int)list.getElementByPosition(1));
+
+
+        list.setElementByPosition(1, 2);
+        assertEquals(1, (int)list.getElementByPosition(2));
+
+    }
+
+    @Test
+    public void clear() throws Exception {
+        IList<Integer> list = new ArrayList<>();
+
+        list.addElement(1);
+        list.addElement(1);
+        list.addElement(1);
+
+        list.clear();
+
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
+    public void contains() throws Exception {
+        IList<Integer> list = new ArrayList<>();
+
+        list.addElement(1);
+        list.addElement(2);
+        list.addElement(3);
+
+        assertTrue(list.contains(1));
+        assertTrue(list.contains(2));
+        assertTrue(list.contains(3));
+
+        assertFalse(list.contains(0));
+        assertFalse(list.contains(-1));
+        assertFalse(list.contains(4));
+    }
+
+    @Test
+    public void isEmpty() throws Exception {
+        IList<Integer> list = new ArrayList<>();
+        assertTrue(list.isEmpty());
+
+        list.addElement(1);
+        assertFalse(list.isEmpty());
+
+        list.removeElement(1);
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
     public void getSize() throws Exception {
         IList<Integer> list = new ArrayList<>();
 

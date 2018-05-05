@@ -162,4 +162,41 @@ public class LinkedList<T> implements IList<T> {
             }
         }
     }
+
+    @Override
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    @Override
+    public boolean contains(T t) {
+        return getElementPosition(t) != -1;
+    }
+
+    @Override
+    public void clear() {
+        head = null;
+    }
+
+    @Override
+    public void setElementByPosition(T t, int position) throws ListIndexOutOfBoundsException {
+        if ((head == null && position >= 0) || position < 0) {
+            throw new ListIndexOutOfBoundsException();
+        } else {
+            LinkedListNode<T> currentNode = head;
+            int currentPosition = 0;
+
+            while (currentNode != null && currentPosition != position) {
+                currentNode = currentNode.getNextNode();
+                currentPosition++;
+            }
+
+            if (currentNode == null) {
+                throw new ListIndexOutOfBoundsException();
+            } else {
+                currentNode.setData(t);
+            }
+        }
+    }
+
 }

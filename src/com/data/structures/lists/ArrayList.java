@@ -121,4 +121,32 @@ public class ArrayList<T> implements IList<T> {
             return (T) array[position];
         }
     }
+
+    @Override
+    public boolean isEmpty() {
+        return arrayPointer == -1;
+    }
+
+    @Override
+    public boolean contains(T t) {
+        return getElementPosition(t) != -1;
+    }
+
+    @Override
+    public void clear() {
+        array = new Object[THRESHOLD_SIZE];
+        THRESHOLD_SIZE = 5;
+        arrayPointer = -1;
+    }
+
+    @Override
+    public void setElementByPosition(T t, int position) throws ListIndexOutOfBoundsException {
+        if (position > arrayPointer) {
+            throw new ListIndexOutOfBoundsException();
+        } else {
+            array[position] = t;
+        }
+    }
 }
+
+

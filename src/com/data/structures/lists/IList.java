@@ -18,4 +18,12 @@ public interface IList<T> {
 
     public T getElementByPosition(int position) throws ListIndexOutOfBoundsException;
 
+    public boolean isEmpty();
+
+    public boolean contains(T t);
+
+    public void clear();
+
+    public void setElementByPosition(T t, int position) throws ListIndexOutOfBoundsException;
+
 }
