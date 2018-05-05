@@ -62,12 +62,30 @@ public class ArrayList<T> implements IList<T> {
 
     @Override
     public void removeElement(T t) {
+        int elementPosition = -1;
 
+        for (int i = 0; i <= arrayPointer; i++) {
+            if (array[i].equals(t)) {
+                elementPosition = i;
+            }
+        }
+
+        if (elementPosition != -1) {
+            for (int i = elementPosition; i < arrayPointer; i++) {
+                array[i] = array[i + 1];
+            }
+
+            arrayPointer--;
+        }
     }
 
     @Override
     public void removeElementByPosition(int position) throws ListIndexOutOfBoundsException {
+        for (int i = position; i < arrayPointer; i++) {
+            array[i] = array[i + 1];
+        }
 
+        arrayPointer--;
     }
 
     @Override
