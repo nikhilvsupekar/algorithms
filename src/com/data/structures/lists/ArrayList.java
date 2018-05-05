@@ -16,8 +16,14 @@ public class ArrayList<T> implements IList<T> {
     }
 
 
-    private void resizeArray() {
-        THRESHOLD_SIZE *= 2;
+    private void resizeArray(boolean expand) {
+
+        if (expand) {
+            THRESHOLD_SIZE *= 2;
+        } else {
+            THRESHOLD_SIZE /= 2;
+        }
+
         Object[] tempArray = new Object[THRESHOLD_SIZE];
 
         for (int i = 0; i <= arrayPointer; i++) {
@@ -35,7 +41,7 @@ public class ArrayList<T> implements IList<T> {
     @Override
     public void addElement(T t) {
         if (arrayPointer == THRESHOLD_SIZE - 1) {
-            resizeArray();
+            resizeArray(true);
         }
 
         arrayPointer++;
@@ -48,7 +54,7 @@ public class ArrayList<T> implements IList<T> {
             throw new ListIndexOutOfBoundsException();
         } else {
             if (arrayPointer == THRESHOLD_SIZE - 1) {
-                resizeArray();
+                resizeArray(true);
             }
 
             for (int i = arrayPointer; i >= position; i--) {
@@ -76,6 +82,10 @@ public class ArrayList<T> implements IList<T> {
             }
 
             arrayPointer--;
+
+            if (arrayPointer < THRESHOLD_SIZE / 2) {
+                resizeArray(false);
+            }
         }
     }
 
@@ -86,6 +96,10 @@ public class ArrayList<T> implements IList<T> {
         }
 
         arrayPointer--;
+
+        if (arrayPointer < THRESHOLD_SIZE / 2) {
+            resizeArray(false);
+        }
     }
 
     @Override

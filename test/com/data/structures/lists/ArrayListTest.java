@@ -20,6 +20,16 @@ public class ArrayListTest {
         list.addElement(3);
 
         assertEquals(3, list.getSize());
+
+        list.addElement(3);
+        list.addElement(3);
+        list.addElement(3);
+        list.addElement(3);
+        list.addElement(3);
+        list.addElement(3);
+        list.addElement(3);
+
+        assertEquals(10, list.getSize());
     }
 
     @Test
@@ -34,6 +44,24 @@ public class ArrayListTest {
 
         list.addElement(3);
         assertEquals(3, (int)list.getElementByPosition(2));
+
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(3));
+
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(4));
+
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(5));
+
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(6));
+
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(7));
+
+        list.addElement(3);
+        assertEquals(3, (int)list.getElementByPosition(8));
     }
 
     @Test
@@ -48,6 +76,13 @@ public class ArrayListTest {
 
         list.addElement(4, 3);
         assertEquals(4, (int)list.getElementByPosition(3));
+
+        list.addElement(10, 0);
+        assertEquals(10, (int)list.getElementByPosition(0));
+
+        list.addElement(11, 5);
+        assertEquals(11, (int)list.getElementByPosition(5));
+
     }
 
     @Test
@@ -60,6 +95,8 @@ public class ArrayListTest {
         assertEquals(1, list.getSize());
 
         list.addElement(3);
+        list.addElement(4);
+        list.addElement(4);
         list.addElement(4);
 
         list.removeElement(3);
