@@ -3,26 +3,24 @@ package com.data.structures.lists;
 import com.data.exceptions.ListIndexOutOfBoundsException;
 
 /**
- * Linked List Structure implementing the IList interface
+ * Doubly Linked List structure implementing the IList interface
  *
- * @param <T>   Generic Element type
+ * @param <T>   a generic type
  *
- * @author Nikhil Supekar
+ * @author      Nikhil Supekar
  */
-public class LinkedList<T> implements IList<T> {
+public class DoublyLinkedList<T> implements IList<T> {
 
-    /**
-     * Reference to the first node of the linked list structure
-     */
-    private LinkedListNode<T> head;
+    private DoublyLinkedListNode<T> head;
 
-    public LinkedList() {
+    public DoublyLinkedList() {
         this.head = null;
     }
 
+    @Override
     public int getSize() {
         int size = 0;
-        LinkedListNode currentNode = head;
+        DoublyLinkedListNode currentNode = head;
 
         while (currentNode != null) {
             currentNode = currentNode.getNextNode();
@@ -32,50 +30,61 @@ public class LinkedList<T> implements IList<T> {
         return size;
     }
 
+    @Override
     public void addElement(T t) {
         if (head == null) {
-            head = new LinkedListNode<>(t);
+            head = new DoublyLinkedListNode<>(t);
         } else {
-            LinkedListNode currentNode = head;
+            DoublyLinkedListNode<T> currentNode = head;
 
             while (currentNode.getNextNode() != null) {
                 currentNode = currentNode.getNextNode();
             }
 
-            currentNode.setNextNode(new LinkedListNode<>(t));
+            currentNode.setNextNode(new DoublyLinkedListNode<>(t, currentNode, null));
         }
     }
 
+    @Override
     public void addElement(T t, int position) throws ListIndexOutOfBoundsException {
         if (head == null && position == 0) {
-            head = new LinkedListNode<>(t);
+            head = new DoublyLinkedListNode<>(t);
         } else if ((head == null && position > 0) || position < 0) {
             throw new ListIndexOutOfBoundsException();
         } else if (position == 0) {
-            LinkedListNode<T> newNode = new LinkedListNode<>(t);
-            LinkedListNode nextNode = head;
-            head = newNode;
-            head.setNextNode(nextNode);
+            head = new DoublyLinkedListNode<>(t, null, head);
         } else {
-            LinkedListNode prev = getLinkedListNodeByPosition(position - 1);
+            DoublyLinkedListNode<T> prev = getDoublyLinkedListNodeByPosition(position - 1);
 
             if (prev == null) {
                 throw new ListIndexOutOfBoundsException();
             } else {
-                LinkedListNode newNode = new LinkedListNode<>(t);
-
                 if (prev.getNextNode() == null) {
-                    prev.setNextNode(newNode);
+                    prev.setNextNode(new DoublyLinkedListNode<>(t, prev, null));
                 } else {
-                    LinkedListNode nextNode = prev.getNextNode();
-                    prev.setNextNode(newNode);
-                    newNode.setNextNode(nextNode);
+                    prev.setNextNode(new DoublyLinkedListNode<>(t, prev, prev.getNextNode()));
                 }
             }
         }
-
     }
 
+    private DoublyLinkedListNode<T> getDoublyLinkedListNodeByPosition(int position) {
+        if (head == null) {
+            return null;
+        }
+
+        int currentPosition = 0;
+        DoublyLinkedListNode<T> currentNode = head;
+
+        while (currentPosition != position && currentNode != null) {
+            currentNode = currentNode.getNextNode();
+            currentPosition++;
+        }
+
+        return currentNode;
+    }
+
+    @Override
     public void removeElement(T t) {
         if (head == null) {
             return;
@@ -84,7 +93,7 @@ public class LinkedList<T> implements IList<T> {
         if (head.getNextNode() == null && head.getData().equals(t)) {
             head = null;
         } else {
-            LinkedListNode currentNode = head;
+            DoublyLinkedListNode<T> currentNode = head;
             while (currentNode.getNextNode() != null && !currentNode.getNextNode().getData().equals(t)) {
                 currentNode = currentNode.getNextNode();
             }
@@ -94,21 +103,24 @@ public class LinkedList<T> implements IList<T> {
             }
 
             if (currentNode.getNextNode().getData().equals(t)) {
-                LinkedListNode nextNode = currentNode.getNextNode().getNextNode();
+                DoublyLinkedListNode<T> nextNode = currentNode.getNextNode().getNextNode();
+                if (nextNode != null) {
+                    nextNode.setPreviousNode(currentNode);
+                }
                 currentNode.setNextNode(nextNode);
             }
 
         }
-
     }
 
+    @Override
     public void removeElementByPosition(int position) throws ListIndexOutOfBoundsException {
         if ((head == null && position >= 0) || position < 0) {
             throw new ListIndexOutOfBoundsException();
         } else if (position == 0) {
             head = head.getNextNode();
         } else {
-            LinkedListNode prevNode = getLinkedListNodeByPosition(position - 1);
+            DoublyLinkedListNode<T> prevNode = getDoublyLinkedListNodeByPosition(position - 1);
             if (prevNode == null) {
                 throw new ListIndexOutOfBoundsException();
             } else {
@@ -116,13 +128,15 @@ public class LinkedList<T> implements IList<T> {
                     prevNode.setNextNode(null);
                 } else {
                     prevNode.setNextNode(prevNode.getNextNode().getNextNode());
+                    prevNode.getNextNode().setPreviousNode(prevNode);
                 }
             }
         }
     }
 
+    @Override
     public int getElementPosition(T t) {
-        LinkedListNode currentNode = head;
+        DoublyLinkedListNode<T> currentNode = head;
         int currentPosition = 0;
 
         while (currentNode != null) {
@@ -137,27 +151,12 @@ public class LinkedList<T> implements IList<T> {
         return -1;
     }
 
-    private LinkedListNode getLinkedListNodeByPosition(int position) {
-        if (head == null) {
-            return null;
-        }
-
-        int currentPosition = 0;
-        LinkedListNode currentNode = head;
-
-        while (currentPosition != position && currentNode != null) {
-            currentNode = currentNode.getNextNode();
-            currentPosition++;
-        }
-
-        return currentNode;
-    }
-
+    @Override
     public T getElementByPosition(int position) throws ListIndexOutOfBoundsException {
         if ((head == null && position >= 0) || position < 0) {
             throw new ListIndexOutOfBoundsException();
         } else {
-            LinkedListNode<T> currentNode = head;
+            DoublyLinkedListNode<T> currentNode = head;
             int currentPosition = 0;
 
             while (currentNode != null && currentPosition != position) {
@@ -193,7 +192,7 @@ public class LinkedList<T> implements IList<T> {
         if ((head == null && position >= 0) || position < 0) {
             throw new ListIndexOutOfBoundsException();
         } else {
-            LinkedListNode<T> currentNode = head;
+            DoublyLinkedListNode<T> currentNode = head;
             int currentPosition = 0;
 
             while (currentNode != null && currentPosition != position) {
@@ -202,11 +201,10 @@ public class LinkedList<T> implements IList<T> {
             }
 
             if (currentNode == null) {
-                 throw new ListIndexOutOfBoundsException();
+                throw new ListIndexOutOfBoundsException();
             } else {
                 currentNode.setData(t);
             }
         }
     }
-
 }
