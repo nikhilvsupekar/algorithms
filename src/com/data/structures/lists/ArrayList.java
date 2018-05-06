@@ -1,12 +1,30 @@
 package com.data.structures.lists;
 
 import com.data.exceptions.ListIndexOutOfBoundsException;
-import sun.awt.image.ImageWatched;
 
+
+/**
+ * An array-based implementation for lists.
+ * The array grows and shrinks dynamically as elements are added/removed.
+ *
+ * @param <T>   a generic type
+ * @author      Nikhil Supekar
+ */
 public class ArrayList<T> implements IList<T> {
 
+    /**
+     * Array holding the underlying data
+     */
     private Object[] array;
+
+    /**
+     * Size after which the array needs to grown/shrunk at runtime
+     */
     private int THRESHOLD_SIZE = 5;
+
+    /**
+     * Points to the last element in the list
+     */
     private int arrayPointer;
 
     public ArrayList() {
@@ -16,6 +34,12 @@ public class ArrayList<T> implements IList<T> {
     }
 
 
+    /**
+     * Use a heuristic to resize the array after the number of elements crosses the THRESHOLD_SIZE
+     * Current heuristic = double / half the size of the array
+     *
+     * @param expand    boolean indicating if the array has to be grown or shrunk
+     */
     private void resizeArray(boolean expand) {
 
         if (expand) {

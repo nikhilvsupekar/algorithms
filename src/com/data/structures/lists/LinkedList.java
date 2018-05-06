@@ -2,8 +2,18 @@ package com.data.structures.lists;
 
 import com.data.exceptions.ListIndexOutOfBoundsException;
 
+/**
+ * Linked List Structure implementing the IList interface
+ *
+ * @param <T>   Generic Element type
+ *
+ * @author Nikhil Supekar
+ */
 public class LinkedList<T> implements IList<T> {
 
+    /**
+     * Reference to the first node of the linked list structure
+     */
     private LinkedListNode<T> head;
 
     public LinkedList() {

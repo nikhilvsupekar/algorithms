@@ -1,5 +1,12 @@
 package com.data.structures.lists;
 
+/**
+ * Data Structure for a single node in the Linked List
+ *
+ * @param <T>   a generic type
+ *
+ * @author  Nikhil Supekar
+ */
 public class LinkedListNode<T> {
 
     public LinkedListNode(T data, LinkedListNode nextNode) {
