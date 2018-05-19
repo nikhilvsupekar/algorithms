@@ -34,9 +34,30 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     }
 
 
+    private void deleteRoot() {
+        if (root.getLeft() == null) {
+            root = root.getRight();
+        } else if (root.getRight() == null) {
+            root = root.getLeft();
+        } else {
+            BinaryTreeNode<T> rightMost = root.getLeft();
+
+            while (rightMost.getRight() != null) {
+                rightMost = rightMost.getRight();
+            }
+
+            rightMost.setRight(root.getRight());
+            root = root.getLeft();
+        }
+    }
+
     public void removeElement(T t) {
         if (root == null) {
             return;
+        }
+
+        if (t.compareTo(root.getData()) == 0) {
+            deleteRoot();
         }
 
         BinaryTreeNode<T> currentNode = root;
