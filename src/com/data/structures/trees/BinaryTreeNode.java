@@ -1,6 +1,6 @@
 package com.data.structures.trees;
 
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode<T extends Comparable<T>> {
     private T data;
     private BinaryTreeNode<T> left;
     private BinaryTreeNode<T> right;
