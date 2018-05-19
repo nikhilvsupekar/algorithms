@@ -1,6 +1,6 @@
 package com.data.structures.trees;
 
-public class BinarySearchTree<T extends Comparable<T>> {
+public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     private BinaryTreeNode<T> root;
 
     public BinarySearchTree() {
