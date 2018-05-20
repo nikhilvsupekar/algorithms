@@ -1,5 +1,9 @@
 package com.data.structures.trees;
 
+import com.data.structures.Stack;
+import com.data.structures.lists.ArrayList;
+import com.data.structures.lists.IList;
+
 public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
     private BinaryTreeNode<T> root;
 
@@ -115,5 +119,41 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
                 }
             }
         }
+    }
+
+
+    public IList<T> preOrderTraversal() {
+        IList<T> preOrderList = new ArrayList<>();
+        Stack<BinaryTreeNode<T>> stack = new Stack<>();
+
+        if (root == null) {
+            return preOrderList;
+        }
+
+        BinaryTreeNode<T> currentNode = root;
+
+        while (true) {
+            preOrderList.addElement(currentNode.getData());
+
+            if (currentNode.getLeft() != null) {
+                stack.push(currentNode);
+                currentNode = currentNode.getLeft();
+            } else if (currentNode.getRight() != null) {
+                currentNode = currentNode.getRight();
+            } else {
+
+                currentNode = stack.pop().getRight();
+                while (currentNode == null && !stack.isEmpty()) {
+                    currentNode = stack.pop().getRight();
+                }
+
+                if (stack.isEmpty() && currentNode == null) {
+                    break;
+                }
+            }
+        }
+
+
+        return preOrderList;
     }
 }
