@@ -1,4 +1,4 @@
 package com.data.exceptions;
 
-public class ListIndexOutOfBoundsException extends Exception {
+public class ListIndexOutOfBoundsException extends RuntimeException {
 }

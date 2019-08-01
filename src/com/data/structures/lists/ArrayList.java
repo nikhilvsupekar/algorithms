@@ -10,7 +10,7 @@ import com.data.exceptions.ListIndexOutOfBoundsException;
  * @param <T>   a generic type
  * @author      Nikhil Supekar
  */
-public class ArrayList<T> implements IList<T> {
+public class ArrayList<T extends Comparable<T>> implements IList<T> {
 
     /**
      * Array holding the underlying data

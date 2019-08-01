@@ -9,7 +9,7 @@ import com.data.exceptions.ListIndexOutOfBoundsException;
  *
  * @author Nikhil Supekar
  */
-public class LinkedList<T> implements IList<T> {
+public class LinkedList<T extends Comparable<T>> implements IList<T> {
 
     /**
      * Reference to the first node of the linked list structure

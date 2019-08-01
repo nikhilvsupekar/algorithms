@@ -9,7 +9,7 @@ import com.data.exceptions.ListIndexOutOfBoundsException;
  *
  * @author      Nikhil Supekar
  */
-public class DoublyLinkedList<T> implements IList<T> {
+public class DoublyLinkedList<T extends Comparable<T>> implements IList<T> {
 
     private DoublyLinkedListNode<T> head;
 

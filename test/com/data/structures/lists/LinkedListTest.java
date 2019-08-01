@@ -2,7 +2,7 @@ package com.data.structures.lists;
 
 import com.data.structures.lists.IList;
 import com.data.structures.lists.LinkedList;
-import com.sun.javafx.iio.common.ImageLoaderImpl;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
