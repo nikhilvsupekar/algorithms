@@ -12,6 +12,8 @@ public class BinaryTreeNode<T extends Comparable<T>> {
 
     public BinaryTreeNode(T value_) {
         this.value_ = value_;
+        this.left_ = null;
+        this.right_ = null;
     }
 
     public BinaryTreeNode<T> left() {

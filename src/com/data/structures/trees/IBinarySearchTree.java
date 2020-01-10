@@ -1,5 +1,7 @@
 package com.data.structures.trees;
 
+import com.data.structures.lists.IList;
+
 /**
  * Interface for Binary Search Trees
  *
@@ -27,4 +29,32 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      * @param t   A generic element to be searched in the tree
      */
     public boolean contains(T t);
+
+    /**
+     * Check if the tree is empty
+     *
+     * @return   true if the tree is empty, false otherwise
+     */
+    public boolean isEmpty();
+
+    /**
+     * Perform an iterative inorder traversal of the tree
+     *
+     * @return  List of elements visited inorder
+     */
+    public IList<T> inorderTraversal();
+
+    /**
+     * Perform an iterative preorder traversal of the tree
+     *
+     * @return  List of elements visited preorder
+     */
+    public IList<T> preorderTraversal();
+
+    /**
+     * Perform an iterative postorder traversal of the tree
+     *
+     * @return  List of elements visited postorder
+     */
+    public IList<T> postorderTraversal();
 }
