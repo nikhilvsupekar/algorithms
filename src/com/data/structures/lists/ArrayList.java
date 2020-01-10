@@ -29,7 +29,6 @@ public class ArrayList<T extends Comparable<T>> implements IList<T> {
 
     public ArrayList() {
         array = new Object[THRESHOLD_SIZE];
-        THRESHOLD_SIZE = 5;
         arrayPointer = -1;
     }
 
