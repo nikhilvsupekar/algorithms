@@ -1,5 +1,6 @@
 package com.algorithms.trees;
 
+import com.data.structures.lists.ArrayList;
 import com.data.structures.lists.IList;
 import com.data.structures.trees.BinaryTreeNode;
 
@@ -69,10 +70,17 @@ public class BinarySearchTreeAlgorithms {
     }
 
     public static <T extends Comparable<T>>
-    IList<T> inorderTraversal_recursive(BinaryTreeNode<T> node, IList<T> partialTraversal) {
-        if (node == null) return partialTraversal;
+    IList<T> inorderTraversal_recursive(BinaryTreeNode<T> node) {
+        IList<T> fullTraversal = new ArrayList<>();
+        if (node == null) return null;
 
+        IList<T> leftTraversal = inorderTraversal_recursive(node.left());
+        IList<T> rightTraversal = inorderTraversal_recursive(node.right());
 
-        return null;
+        fullTraversal.addListElements(leftTraversal);
+        fullTraversal.addElement(node.value());
+        fullTraversal.addListElements(rightTraversal);
+
+        return fullTraversal;
     }
 }
