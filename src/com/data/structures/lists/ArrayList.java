@@ -2,6 +2,11 @@ package com.data.structures.lists;
 
 import com.data.exceptions.ListIndexOutOfBoundsException;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
 
 /**
  * An array-based implementation for lists.
@@ -168,6 +173,27 @@ public class ArrayList<T extends Comparable<T>> implements IList<T> {
             throw new ListIndexOutOfBoundsException();
         } else {
             array[position] = t;
+        }
+    }
+
+
+    private class ArrayListIterator<T extends Comparable<T>> implements Iterator<T> {
+        private int current = -1;
+
+        public ArrayListIterator(ArrayList<T> t) {
+            current = getSize() > 0 ? 0 : -1;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current < getSize();
+        }
+
+        @Override
+        public T next() {
+            if (hasNext()) return (T) array[current++];
+
+            throw new NoSuchElementException();
         }
     }
 }
