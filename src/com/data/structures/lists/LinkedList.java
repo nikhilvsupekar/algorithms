@@ -76,6 +76,7 @@ public class LinkedList<T extends Comparable<T>> implements IList<T> {
 
     }
 
+
     public void removeElement(T t) {
         if (head == null) {
             return;

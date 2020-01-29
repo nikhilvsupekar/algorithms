@@ -39,6 +39,13 @@ public interface IList<T extends Comparable<T>> {
 
 
     /**
+     * Add all elements of the parameter list to the current list.
+     *
+     * @param iList     List elements to be added to the current list
+     */
+//    public void addList(IList<T> iList);
+
+    /**
      * Remove the specified element from the list.
      * Removes only the first instance of the element in the list.
      *
