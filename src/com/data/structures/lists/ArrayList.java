@@ -4,8 +4,6 @@ import com.data.exceptions.ListIndexOutOfBoundsException;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 
 /**

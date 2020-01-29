@@ -2,6 +2,9 @@ package com.data.structures.lists;
 
 import com.data.exceptions.ListIndexOutOfBoundsException;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Doubly Linked List structure implementing the IList interface
  *
@@ -205,6 +208,34 @@ public class DoublyLinkedList<T extends Comparable<T>> implements IList<T> {
             } else {
                 currentNode.setData(t);
             }
+        }
+    }
+
+    public DoublyLinkedListNode<T> getHead() {
+        return head;
+    }
+
+    private class DoublyLinkedListIterator<T extends Comparable<T>> implements Iterator<T> {
+        DoublyLinkedListNode<T> current = null;
+
+        public DoublyLinkedListIterator(DoublyLinkedList<T> doublyLinkedList) {
+            current = doublyLinkedList.getHead();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            if (current == null) {
+                throw new NoSuchElementException();
+            }
+
+            T data = current.getData();
+            current = current.getNextNode();
+            return data;
         }
     }
 }

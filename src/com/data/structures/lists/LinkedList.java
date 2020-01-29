@@ -2,6 +2,9 @@ package com.data.structures.lists;
 
 import com.data.exceptions.ListIndexOutOfBoundsException;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Linked List Structure implementing the IList interface
  *
@@ -207,6 +210,34 @@ public class LinkedList<T extends Comparable<T>> implements IList<T> {
             } else {
                 currentNode.setData(t);
             }
+        }
+    }
+
+    public LinkedListNode<T> getHead() {
+        return head;
+    }
+
+    private class LinkedListIterator<T extends Comparable<T>> implements Iterator<T> {
+        private LinkedListNode<T> current = null;
+
+        public LinkedListIterator(LinkedList<T> linkedList) {
+            current = linkedList.getHead();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            if (current != null) {
+                throw new NoSuchElementException();
+            }
+
+            T data = current.getData();
+            current = current.getNextNode();
+            return data;
         }
     }
 
