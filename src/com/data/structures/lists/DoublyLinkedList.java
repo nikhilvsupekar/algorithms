@@ -215,11 +215,16 @@ public class DoublyLinkedList<T extends Comparable<T>> implements IList<T> {
         return head;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new DoublyLinkedListIterator<>();
+    }
+
     private class DoublyLinkedListIterator<T extends Comparable<T>> implements Iterator<T> {
         DoublyLinkedListNode<T> current = null;
 
-        public DoublyLinkedListIterator(DoublyLinkedList<T> doublyLinkedList) {
-            current = doublyLinkedList.getHead();
+        public DoublyLinkedListIterator() {
+            current = (DoublyLinkedListNode<T>) head;
         }
 
         @Override

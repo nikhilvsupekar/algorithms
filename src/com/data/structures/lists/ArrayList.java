@@ -174,11 +174,16 @@ public class ArrayList<T extends Comparable<T>> implements IList<T> {
         }
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayListIterator<T>();
+    }
 
-    private class ArrayListIterator<T extends Comparable<T>> implements Iterator<T> {
+
+    public class ArrayListIterator<T extends Comparable<T>> implements Iterator<T> {
         private int current = -1;
 
-        public ArrayListIterator(ArrayList<T> t) {
+        public ArrayListIterator() {
             current = getSize() > 0 ? 0 : -1;
         }
 

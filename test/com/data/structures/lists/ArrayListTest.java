@@ -3,6 +3,8 @@ package com.data.structures.lists;
 import com.data.exceptions.ListIndexOutOfBoundsException;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+
 import static org.junit.Assert.*;
 
 public class ArrayListTest {
@@ -203,4 +205,19 @@ public class ArrayListTest {
         assertEquals(3, (int)list.getElementByPosition(2));
     }
 
+    @Test
+    public void iterator() {
+        IList<Integer> list = new ArrayList<>();
+
+        list.addElement(1);
+        list.addElement(2);
+        list.addElement(3);
+        list.addElement(4);
+        list.addElement(5);
+
+        int counter = 1;
+        for (Integer i : list) {
+            assertEquals(i, (Integer)counter++);
+        }
+    }
 }

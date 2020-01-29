@@ -217,11 +217,16 @@ public class LinkedList<T extends Comparable<T>> implements IList<T> {
         return head;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListIterator<>();
+    }
+
     private class LinkedListIterator<T extends Comparable<T>> implements Iterator<T> {
         private LinkedListNode<T> current = null;
 
-        public LinkedListIterator(LinkedList<T> linkedList) {
-            current = linkedList.getHead();
+        public LinkedListIterator() {
+            current = (LinkedListNode<T>) head;
         }
 
         @Override
