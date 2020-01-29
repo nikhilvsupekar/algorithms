@@ -220,4 +220,24 @@ public class ArrayListTest {
             assertEquals(i, (Integer)counter++);
         }
     }
+
+    @Test
+    public void addListElements() {
+        IList<Integer> l1 = new ArrayList<>();
+        IList<Integer> l2 = new ArrayList<>();
+
+        l1.addElement(1);
+        l1.addElement(2);
+        l1.addElement(3);
+        l2.addElement(4);
+        l2.addElement(5);
+        l2.addElement(6);
+
+        l1.addListElements(l2);
+
+        assertEquals(6, l1.getSize());
+        assertEquals((Integer) 4, l1.getElementByPosition(3));
+        assertEquals((Integer) 5, l1.getElementByPosition(4));
+        assertEquals((Integer) 6, l1.getElementByPosition(5));
+    }
 }

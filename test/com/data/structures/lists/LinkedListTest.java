@@ -169,4 +169,39 @@ public class LinkedListTest {
         assertEquals(2, list.getElementPosition(3));
     }
 
+    @Test
+    public void iterator() {
+        IList<Integer> list = new LinkedList<>();
+
+        list.addElement(1);
+        list.addElement(2);
+        list.addElement(3);
+        list.addElement(4);
+        list.addElement(5);
+
+        int counter = 1;
+        for (Integer i : list) {
+            assertEquals(i, (Integer)counter++);
+        }
+    }
+
+    @Test
+    public void addListElements() {
+        IList<Integer> l1 = new LinkedList<>();
+        IList<Integer> l2 = new LinkedList<>();
+
+        l1.addElement(1);
+        l1.addElement(2);
+        l1.addElement(3);
+        l2.addElement(4);
+        l2.addElement(5);
+        l2.addElement(6);
+
+        l1.addListElements(l2);
+
+        assertEquals(6, l1.getSize());
+        assertEquals((Integer) 4, l1.getElementByPosition(3));
+        assertEquals((Integer) 5, l1.getElementByPosition(4));
+        assertEquals((Integer) 6, l1.getElementByPosition(5));
+    }
 }

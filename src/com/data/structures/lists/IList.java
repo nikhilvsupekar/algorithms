@@ -116,4 +116,11 @@ public interface IList<T extends Comparable<T>> extends Iterable<T>{
      */
     public void setElementByPosition(T t, int position) throws ListIndexOutOfBoundsException;
 
+
+    /**
+     * Add elements of the parameter list to the current list
+     * @param iList     List whose elements need to be added to the list
+     */
+    public void addListElements(IList<T> iList);
+
 }

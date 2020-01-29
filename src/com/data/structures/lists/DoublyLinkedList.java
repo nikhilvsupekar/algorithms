@@ -211,6 +211,15 @@ public class DoublyLinkedList<T extends Comparable<T>> implements IList<T> {
         }
     }
 
+    @Override
+    public void addListElements(IList<T> iList) {
+        if (iList == null) return;
+
+        for (T elem : iList) {
+            addElement(elem);
+        }
+    }
+
     public DoublyLinkedListNode<T> getHead() {
         return head;
     }
