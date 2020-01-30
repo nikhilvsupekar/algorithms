@@ -57,4 +57,11 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      * @return  List of elements visited postorder
      */
     public IList<T> postorderTraversal();
+
+    /**
+     * Returns the root of the tree
+     *
+     * @return  A BinaryTreeNode reference to the root
+     */
+    public BinaryTreeNode<T> root();
 }

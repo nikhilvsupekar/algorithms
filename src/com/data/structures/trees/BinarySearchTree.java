@@ -15,7 +15,32 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public void add(T t) {
+        BinaryTreeNode<T> insertNode = new BinaryTreeNode<>(t);
 
+        if (root_ == null) {
+            root_ = insertNode;
+        } else {
+            BinaryTreeNode<T> current = root_;
+            BinaryTreeNode<T> prev = root_;
+
+            while (current != null) {
+                prev = current;
+                if (t.compareTo(current.value()) < 0) {
+                    current = current.left();
+                } else if (t.compareTo(current.value()) > 0) {
+                    current = current.right();
+                } else {
+                    return;
+                }
+            }
+
+            if (t.compareTo(prev.value()) < 0) {
+                prev.setLeft(insertNode);
+            } else {
+                prev.setRight(insertNode);
+            }
+
+        }
     }
 
     @Override
@@ -46,5 +71,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
     @Override
     public IList<T> postorderTraversal() {
         return null;
+    }
+
+    @Override
+    public BinaryTreeNode<T> root() {
+        return root_;
     }
 }
