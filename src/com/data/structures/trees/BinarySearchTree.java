@@ -104,7 +104,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public boolean contains(T t) {
-        return false;
+        return searchNode(t) != null;
     }
 
     @Override
