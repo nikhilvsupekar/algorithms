@@ -72,4 +72,5 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      * @return      Reference to the element to be searched
      */
     public BinaryTreeNode<T> searchNode(T t);
+
 }

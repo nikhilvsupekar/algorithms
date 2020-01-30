@@ -16,31 +16,20 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
     @Override
     public void add(T t) {
         BinaryTreeNode<T> insertNode = new BinaryTreeNode<>(t);
+        BinaryTreeNode<T> prev = searchLogicalParent(t);
+        insertNode.setParent(prev);
 
-        if (root_ == null) {
+        if (prev == null) {
             root_ = insertNode;
-        } else {
-            BinaryTreeNode<T> current = root_;
-            BinaryTreeNode<T> prev = root_;
-
-            while (current != null) {
-                prev = current;
-                if (t.compareTo(current.value()) < 0) {
-                    current = current.left();
-                } else if (t.compareTo(current.value()) > 0) {
-                    current = current.right();
-                } else {
-                    return;
-                }
-            }
-
-            if (t.compareTo(prev.value()) < 0) {
-                prev.setLeft(insertNode);
-            } else {
-                prev.setRight(insertNode);
-            }
-
+            return;
         }
+
+        if (t.compareTo(prev.value()) < 0) {
+            prev.setLeft(insertNode);
+        } else {
+            prev.setRight(insertNode);
+        }
+
     }
 
     @Override
@@ -96,5 +85,27 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         }
 
         return current;
+    }
+
+    private BinaryTreeNode<T> searchLogicalParent(T t) {
+        if (root_ == null) return null;
+        if (root_.value().equals(t)) return null;
+
+        BinaryTreeNode<T> current = root_;
+        BinaryTreeNode<T> prev = null;
+
+        while (current != null) {
+            if (t.compareTo(current.value()) < 0) {
+                prev = current;
+                current = current.left();
+            } else if (t.compareTo(current.value()) > 0) {
+                prev = current;
+                current = current.right();
+            } else {
+                break;
+            }
+        }
+
+        return prev;
     }
 }

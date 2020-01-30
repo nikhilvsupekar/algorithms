@@ -38,6 +38,10 @@ public class BinaryTreeNode<T extends Comparable<T>> {
         this.right_ = right_;
     }
 
+    public void setParent(BinaryTreeNode<T> parent_) {
+        this.parent_ = parent_;
+    }
+
     public void setValue(T value_) {
         this.value_ = value_;
     }
