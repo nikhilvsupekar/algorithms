@@ -92,4 +92,20 @@ public class BinarySearchTreeTest {
         assertNotEquals(tree.root().left(), 4);
 
     }
+
+    @Test
+    public void contains() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(7);
+        tree.add(4);
+        tree.add(9);
+        tree.add(8);
+        tree.add(2);
+
+        assertTrue(tree.contains(7));
+        assertTrue(tree.contains(4));
+        assertTrue(tree.contains(2));
+        assertFalse(tree.contains(10));
+        assertFalse(tree.contains(20));
+    }
 }
