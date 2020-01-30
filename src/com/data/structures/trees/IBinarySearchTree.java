@@ -64,4 +64,12 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      * @return  A BinaryTreeNode reference to the root
      */
     public BinaryTreeNode<T> root();
+
+    /**
+     * Returns a reference to the node containing the element
+     *
+     * @param t     Element to search in the BST
+     * @return      Reference to the element to be searched
+     */
+    public BinaryTreeNode<T> searchNode(T t);
 }

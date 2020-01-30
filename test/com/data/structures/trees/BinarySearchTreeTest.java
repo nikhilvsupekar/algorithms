@@ -35,4 +35,23 @@ public class BinarySearchTreeTest {
         assertNotNull(tree.root());
         assertEquals(tree.root().value(), (Integer) 4);
     }
+
+    @Test
+    public void searchNode() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(7);
+        tree.add(4);
+        tree.add(9);
+        tree.add(2);
+        tree.add(6);
+        tree.add(3);
+
+        BinaryTreeNode<Integer> node = tree.searchNode(7);
+        assertEquals(node, tree.root());
+        assertEquals(node.left().value(), (Integer) 4);
+        assertEquals(node.right().value(), (Integer) 9);
+
+        node = tree.searchNode(2);
+        assertEquals(node.right().value(), (Integer) 3);
+    }
 }

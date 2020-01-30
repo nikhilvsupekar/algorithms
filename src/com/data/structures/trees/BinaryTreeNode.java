@@ -9,11 +9,13 @@ public class BinaryTreeNode<T extends Comparable<T>> {
     private T value_;
     private BinaryTreeNode<T> left_;
     private BinaryTreeNode<T> right_;
+    private BinaryTreeNode<T> parent_;
 
     public BinaryTreeNode(T value_) {
         this.value_ = value_;
         this.left_ = null;
         this.right_ = null;
+        this.parent_ = null;
     }
 
     public BinaryTreeNode<T> left() {

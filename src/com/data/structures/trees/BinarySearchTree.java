@@ -77,4 +77,24 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
     public BinaryTreeNode<T> root() {
         return root_;
     }
+
+    @Override
+    public BinaryTreeNode<T> searchNode(T t) {
+        if (root_ == null) return null;
+        if (root_.value().equals(t)) return root_;
+
+        BinaryTreeNode<T> current = root_;
+
+        while (current != null) {
+            if (t.compareTo(current.value()) < 0) {
+                current = current.left();
+            } else if (t.compareTo(current.value()) > 0) {
+                current = current.right();
+            } else {
+                break;
+            }
+        }
+
+        return current;
+    }
 }
