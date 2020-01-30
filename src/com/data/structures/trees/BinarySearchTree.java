@@ -34,7 +34,72 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public void remove(T t) {
+        if (root_ == null) return;
 
+        // node to be deleted is the root node
+        if (root_.value().equals(t)) {
+
+            if (root_.left() == null && root_.right() == null) {
+                root_ = null;
+            } else if (root_.left() == null && root_.right() != null) {
+                root_ = root_.right();
+            } else if (root_.left() != null && root_.right() == null) {
+                root_ = root_.left();
+            } else {
+                // go rightmost in the left tree
+                BinaryTreeNode<T> rightmost = root_.left();
+                while (rightmost.right() != null) {
+                    rightmost = rightmost.right();
+                }
+                rightmost.setRight(root_.right());
+
+                root_ = root_.left();
+            }
+
+        } else {
+            BinaryTreeNode<T> prev = searchLogicalParent(t);
+
+            // element not present in the tree
+            if (prev == null) {
+                return;
+            }
+
+            // indicates whether node is a left child or right child of prev
+            boolean positionFlag = prev.left().value().equals(t);
+            BinaryTreeNode<T> node = positionFlag ? prev.left() : prev.right();
+
+            // node to be removed is a leaf node
+            if (node.left() == null && node.right() == null) {
+                if (positionFlag) prev.setLeft(null);
+                else prev.setRight(null);
+
+            }
+            // left child is null but right is not null
+            else if (node.left() == null && node.right() != null) {
+                if (positionFlag) prev.setLeft(node.right());
+                else prev.setRight(node.right());
+
+            }
+            // left child is not null but right is null
+            else if (node.left() != null && node.right() == null){
+                if (positionFlag) prev.setLeft(node.left());
+                else prev.setRight(node.left());
+
+            }
+            // left and right child both not null
+            else {
+
+                // go rightmost in the left tree
+                BinaryTreeNode<T> rightmost = node.left();
+                while (rightmost.right() != null) {
+                    rightmost = rightmost.right();
+                }
+                rightmost.setRight(node.right());
+
+                if (positionFlag) prev.setLeft(node.left());
+                else prev.setRight(node.left());
+            }
+        }
     }
 
     @Override

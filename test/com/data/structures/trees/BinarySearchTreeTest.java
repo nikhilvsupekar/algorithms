@@ -54,4 +54,42 @@ public class BinarySearchTreeTest {
         node = tree.searchNode(2);
         assertEquals(node.right().value(), (Integer) 3);
     }
+
+    @Test
+    public void remove() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(7);
+        tree.remove(7);
+        assertTrue(tree.isEmpty());
+
+        tree.add(7);
+        tree.add(4);
+        tree.remove(7);
+        assertEquals(tree.root().value(), (Integer) 4);
+        tree.remove(4);
+
+        tree.add(7);
+        tree.add(9);
+        tree.remove(7);
+        assertEquals(tree.root().value(), (Integer) 9);
+        tree.remove(9);
+
+        tree.add(7);
+        tree.add(4);
+        tree.add(9);
+        tree.remove(4);
+        assertNull(tree.root().left());
+        tree.add(4);
+
+        tree.remove(9);
+        assertNull(tree.root().right());
+        tree.add(9);
+
+        tree.add(2);
+        tree.add(6);
+        tree.add(3);
+        tree.remove(4);
+        assertNotEquals(tree.root().left(), 4);
+
+    }
 }
