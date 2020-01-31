@@ -1,5 +1,6 @@
 package com.data.structures.trees;
 
+import com.algorithms.trees.BinarySearchTreeAlgorithms;
 import com.data.structures.lists.IList;
 
 public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchTree<T>{
@@ -114,7 +115,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public IList<T> inorderTraversal() {
-        return null;
+        return BinarySearchTreeAlgorithms.inorderTraversal(root_);
     }
 
     @Override

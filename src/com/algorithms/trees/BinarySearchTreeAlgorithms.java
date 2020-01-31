@@ -12,7 +12,7 @@ public class BinarySearchTreeAlgorithms {
      * @return  List of elements visited inorder
      */
     public static <T extends Comparable<T>> IList<T> inorderTraversal(BinaryTreeNode<T> root) {
-        return null;
+        return inorderTraversal_recursive(root);
     }
 
     /**

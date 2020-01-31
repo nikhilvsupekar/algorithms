@@ -1,5 +1,6 @@
 package com.data.structures.trees;
 
+import com.data.structures.lists.IList;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -107,5 +108,52 @@ public class BinarySearchTreeTest {
         assertTrue(tree.contains(2));
         assertFalse(tree.contains(10));
         assertFalse(tree.contains(20));
+    }
+
+    @Test
+    public void inorderTraversal() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(5);
+        tree.add(3);
+        tree.add(7);
+        tree.add(2);
+        tree.add(4);
+        tree.add(8);
+        tree.add(6);
+        tree.add(1);
+
+        IList<Integer> traversal = tree.inorderTraversal();
+        for (int i = 0; i < 8; i++) {
+            assertEquals((Integer) (i + 1), traversal.getElementByPosition(i));
+        }
+
+        tree = new BinarySearchTree<>();
+        tree.add(3);
+        tree.add(7);
+        tree.add(9);
+        tree.add(12);
+        tree.add(100);
+
+        traversal = tree.inorderTraversal();
+        assertEquals(traversal.getElementByPosition(0), (Integer) 3);
+        assertEquals(traversal.getElementByPosition(1), (Integer) 7);
+        assertEquals(traversal.getElementByPosition(2), (Integer) 9);
+        assertEquals(traversal.getElementByPosition(3), (Integer) 12);
+        assertEquals(traversal.getElementByPosition(4), (Integer) 100);
+
+
+        tree = new BinarySearchTree<>();
+        tree.add(-3);
+        tree.add(-7);
+        tree.add(-9);
+        tree.add(-12);
+        tree.add(-100);
+
+        traversal = tree.inorderTraversal();
+        assertEquals(traversal.getElementByPosition(4), (Integer) (-3));
+        assertEquals(traversal.getElementByPosition(3), (Integer) (-7));
+        assertEquals(traversal.getElementByPosition(2), (Integer) (-9));
+        assertEquals(traversal.getElementByPosition(1), (Integer) (-12));
+        assertEquals(traversal.getElementByPosition(0), (Integer) (-100));
     }
 }
