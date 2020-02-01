@@ -121,9 +121,83 @@ public class BinarySearchTreeAlgorithms {
      * @return  List of elements visited postorder
      */
     public static <T extends Comparable<T>> IList<T> postorderTraversal(BinaryTreeNode<T> root) {
-        return postorderTraversal_recursive(root);
+        IList<T> traversal = new ArrayList<>();
+
+        if (root == null) return null;
+        if (!root.hasLeft() && !root.hasRight()) {
+            traversal.addElement(root.value());
+            return traversal;
+        }
+
+        Stack<BinaryTreeNode<T>> stack = new Stack<>();
+        BinaryTreeNode<T> current = root;
+
+        while (current != null) {
+
+            if (current.hasRight()) {
+                if (current.hasLeft()) {
+                    stack.push(current.right());
+                    stack.push(current);
+                    current = current.left();
+                } else {
+                    stack.push(current);
+                    current = current.right();
+                }
+
+            } else if (current.hasLeft()) {
+                stack.push(current);
+                current = current.left();
+
+            } else {
+                traversal.addElement(current.value());
+
+                if (stack.isEmpty()) break;
+                current = stack.pop();
+
+                if (stack.peek() != current.right()) {
+                    boolean breakFlag = false;
+                    while (stack.peek() != current.right()) {
+                        traversal.addElement(current.value());
+
+                        if (stack.isEmpty()) {
+                            breakFlag = true;
+                            break;
+                        }
+                        current = stack.pop();
+
+                        if (stack.isEmpty()) {
+                            traversal.addElement(current.value());
+                            breakFlag = true;
+                            break;
+                        }
+                    }
+
+                    traversal.addElement(current.value());
+                    if (!stack.isEmpty()) current = stack.pop();
+
+                    if (breakFlag) break;
+                } else {
+                    BinaryTreeNode<T> temp = current;
+
+                    if (stack.isEmpty()) break;
+                    current = stack.pop();
+                    stack.push(temp);
+                }
+
+            }
+        }
+
+        return traversal;
     }
 
+    /**
+     * Returns a reference to the node containing the value to be searched
+     *
+     * @param root      Root of the tree to be searched
+     * @param value_    Value to be searched in the tree
+     * @param <T>       Type parameter
+     * @return          Reference to the tree node containing the value
+     */
     public static <T extends Comparable<T>>
     BinaryTreeNode<T> searchNodeByValue(
             BinaryTreeNode<T> root,
