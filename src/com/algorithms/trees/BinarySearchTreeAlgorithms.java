@@ -30,7 +30,25 @@ public class BinarySearchTreeAlgorithms {
                 stack.push(current);
                 current = current.left();
             } else if (current.hasRight()) {
+                traversal.addElement(current.value());
+                current = current.right();
+            } else {
+                traversal.addElement(current.value());
+                if (stack.isEmpty()) {
+                    break;
+                }
 
+                current = stack.pop();
+                traversal.addElement(current.value());
+
+                while (!current.hasRight()) {
+                    if (stack.isEmpty()) {
+                        break;
+                    }
+
+                    current = stack.pop();
+                    traversal.addElement(current.value());
+                }
             }
 
         }
