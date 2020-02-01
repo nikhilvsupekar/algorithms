@@ -21,7 +21,7 @@ public class BinarySearchTreeAlgorithms {
      * @return  List of elements visited preorder
      */
     public static <T extends Comparable<T>> IList<T> preorderTraversal(BinaryTreeNode<T> root) {
-        return null;
+        return preorderTraversal_recursive(root);
     }
 
     /**
@@ -30,7 +30,7 @@ public class BinarySearchTreeAlgorithms {
      * @return  List of elements visited postorder
      */
     public static <T extends Comparable<T>> IList<T> postorderTraversal(BinaryTreeNode<T> root) {
-        return null;
+        return postorderTraversal_recursive(root);
     }
 
     public static <T extends Comparable<T>>
@@ -79,13 +79,41 @@ public class BinarySearchTreeAlgorithms {
         return genericTraversal_recursive(node, "inorder");
     }
 
+    /**
+     * Perform a recursive preorder traversal of the tree
+     *
+     * @return  List of elements visited preorder
+     */
+    public static <T extends Comparable<T>>
+    IList<T> preorderTraversal_recursive(BinaryTreeNode<T> node) {
+        return genericTraversal_recursive(node, "preorder");
+    }
+
+    /**
+     * Perform a recursive postorder traversal of the tree
+     *
+     * @return  List of elements visited postorder
+     */
+    public static <T extends Comparable<T>>
+    IList<T> postorderTraversal_recursive(BinaryTreeNode<T> node) {
+        return genericTraversal_recursive(node, "postorder");
+    }
+
+
+    /**
+     * Generic recursive method for inorder/preorder/postorder traversal
+     *
+     * @param node          Starting node in recursion
+     * @param traversalType inorder/preorder/postorder
+     * @return              List of elements visited in the specified order
+     */
     private static <T extends Comparable<T>>
     IList<T> genericTraversal_recursive(BinaryTreeNode<T> node, String traversalType) {
         IList<T> fullTraversal = new ArrayList<>();
         if (node == null) return null;
 
-        IList<T> leftTraversal = inorderTraversal_recursive(node.left());
-        IList<T> rightTraversal = inorderTraversal_recursive(node.right());
+        IList<T> leftTraversal = genericTraversal_recursive(node.left(), traversalType);
+        IList<T> rightTraversal = genericTraversal_recursive(node.right(), traversalType);
 
         switch (traversalType) {
             case "inorder":

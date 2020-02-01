@@ -120,12 +120,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public IList<T> preorderTraversal() {
-        return null;
+        return BinarySearchTreeAlgorithms.preorderTraversal(root_);
     }
 
     @Override
     public IList<T> postorderTraversal() {
-        return null;
+        return BinarySearchTreeAlgorithms.postorderTraversal(root_);
     }
 
     @Override
