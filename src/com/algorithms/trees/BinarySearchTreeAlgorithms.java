@@ -70,7 +70,49 @@ public class BinarySearchTreeAlgorithms {
      * @return  List of elements visited preorder
      */
     public static <T extends Comparable<T>> IList<T> preorderTraversal(BinaryTreeNode<T> root) {
-        return preorderTraversal_recursive(root);
+        IList<T> traversal = new ArrayList<>();
+
+        if (root == null) return null;
+        if (!root.hasLeft() && !root.hasRight()) {
+            traversal.addElement(root.value());
+            return traversal;
+        }
+
+        Stack<BinaryTreeNode<T>> stack = new Stack<>();
+        BinaryTreeNode<T> current = root;
+
+        while (current != null) {
+            traversal.addElement(current.value());
+
+            if (current.hasLeft()) {
+                stack.push(current);
+                current = current.left();
+            } else if (current.hasRight()) {
+                current = current.right();
+            } else {
+                if (stack.isEmpty()) {
+                    break;
+                }
+
+                current = stack.pop();
+
+                boolean breakFlag = false;
+                while (!current.hasRight()) {
+                    if (stack.isEmpty()) {
+                        breakFlag = true;
+                        break;
+                    }
+
+                    current = stack.pop();
+                }
+
+                if (breakFlag) break;
+
+                current = current.right();
+            }
+        }
+
+        return traversal;
     }
 
     /**
