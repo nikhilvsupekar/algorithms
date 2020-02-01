@@ -69,17 +69,46 @@ public class BinarySearchTreeAlgorithms {
         return null;
     }
 
+    /**
+     * Perform a recursive inorder traversal of the tree
+     *
+     * @return  List of elements visited inorder
+     */
     public static <T extends Comparable<T>>
     IList<T> inorderTraversal_recursive(BinaryTreeNode<T> node) {
+        return genericTraversal_recursive(node, "inorder");
+    }
+
+    private static <T extends Comparable<T>>
+    IList<T> genericTraversal_recursive(BinaryTreeNode<T> node, String traversalType) {
         IList<T> fullTraversal = new ArrayList<>();
         if (node == null) return null;
 
         IList<T> leftTraversal = inorderTraversal_recursive(node.left());
         IList<T> rightTraversal = inorderTraversal_recursive(node.right());
 
-        fullTraversal.addListElements(leftTraversal);
-        fullTraversal.addElement(node.value());
-        fullTraversal.addListElements(rightTraversal);
+        switch (traversalType) {
+            case "inorder":
+                fullTraversal.addListElements(leftTraversal);
+                fullTraversal.addElement(node.value());
+                fullTraversal.addListElements(rightTraversal);
+
+                break;
+
+            case "preorder":
+                fullTraversal.addElement(node.value());
+                fullTraversal.addListElements(leftTraversal);
+                fullTraversal.addListElements(rightTraversal);
+
+                break;
+
+            case "postorder":
+                fullTraversal.addListElements(leftTraversal);
+                fullTraversal.addListElements(rightTraversal);
+                fullTraversal.addElement(node.value());
+
+                break;
+        }
 
         return fullTraversal;
     }
