@@ -14,6 +14,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         this.root_ = root_;
     }
 
+    public BinarySearchTree(IList<T> list) {
+        addListElements(list);
+    }
+
     @Override
     public void add(T t) {
         BinaryTreeNode<T> insertNode = new BinaryTreeNode<>(t);
