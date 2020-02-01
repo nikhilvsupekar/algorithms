@@ -73,4 +73,11 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      */
     public BinaryTreeNode<T> searchNode(T t);
 
+    /**
+     * Adds elements in the list to the tree in the order specified
+     *
+     * @param list  List of elements to be added
+     */
+    public void addListElements(IList<T> list);
+
 }

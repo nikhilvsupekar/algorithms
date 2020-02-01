@@ -153,6 +153,15 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         return current;
     }
 
+    @Override
+    public void addListElements(IList<T> list) {
+        if (list == null) return;
+
+        for (T t : list) {
+            add(t);
+        }
+    }
+
     private BinaryTreeNode<T> searchLogicalParent(T t) {
         if (root_ == null) return null;
         if (root_.value().equals(t)) return null;

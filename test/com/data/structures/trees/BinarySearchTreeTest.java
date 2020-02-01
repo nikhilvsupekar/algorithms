@@ -1,5 +1,6 @@
 package com.data.structures.trees;
 
+import com.data.structures.lists.ArrayList;
 import com.data.structures.lists.IList;
 import org.junit.Test;
 
@@ -229,5 +230,28 @@ public class BinarySearchTreeTest {
         assertEquals(traversal.getElementByPosition(5), (Integer) 8);
         assertEquals(traversal.getElementByPosition(6), (Integer) 7);
         assertEquals(traversal.getElementByPosition(7), (Integer) 5);
+    }
+
+    @Test
+    public void addListElements() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        assertTrue(tree.isEmpty());
+
+        tree.add(4);
+        assertFalse(tree.isEmpty());
+
+        IList<Integer> list = new ArrayList<>();
+        list.addElement(2);
+        list.addElement(3);
+        list.addElement(5);
+
+        tree.addListElements(list);
+        assertFalse(tree.isEmpty());
+
+        BinaryTreeNode<Integer> root = tree.root();
+        assertEquals(root.value(), (Integer) 4);
+        assertEquals(root.left().value(), (Integer) 2);
+        assertEquals(root.right().value(), (Integer) 5);
+        assertEquals(root.left().right().value(), (Integer) 3);
     }
 }
