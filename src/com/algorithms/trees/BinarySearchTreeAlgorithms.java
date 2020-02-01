@@ -41,13 +41,21 @@ public class BinarySearchTreeAlgorithms {
                 current = stack.pop();
                 traversal.addElement(current.value());
 
+                boolean breakFlag = false;
                 while (!current.hasRight()) {
                     if (stack.isEmpty()) {
+                        breakFlag = true;
                         break;
                     }
 
                     current = stack.pop();
                     traversal.addElement(current.value());
+                }
+
+                if (breakFlag) break;
+
+                if (current.hasRight()) {
+                    current = current.right();
                 }
             }
 
