@@ -45,4 +45,12 @@ public class BinaryTreeNode<T extends Comparable<T>> {
     public void setValue(T value_) {
         this.value_ = value_;
     }
+
+    public boolean hasLeft() {
+        return left_ != null;
+    }
+
+    public boolean hasRight() {
+        return right_ != null;
+    }
 }

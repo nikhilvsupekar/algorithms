@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  *
  * @author Nikhil Supekar
  */
-public class LinkedList<T extends Comparable<T>> implements IList<T> {
+public class LinkedList<T> implements IList<T> {
 
     /**
      * Reference to the first node of the linked list structure
@@ -231,7 +231,7 @@ public class LinkedList<T extends Comparable<T>> implements IList<T> {
         return new LinkedListIterator<>();
     }
 
-    private class LinkedListIterator<T extends Comparable<T>> implements Iterator<T> {
+    private class LinkedListIterator<T> implements Iterator<T> {
         private LinkedListNode<T> current = null;
 
         public LinkedListIterator() {

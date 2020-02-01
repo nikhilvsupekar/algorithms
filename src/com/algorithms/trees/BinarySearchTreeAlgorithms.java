@@ -1,5 +1,6 @@
 package com.algorithms.trees;
 
+import com.data.structures.Stack;
 import com.data.structures.lists.ArrayList;
 import com.data.structures.lists.IList;
 import com.data.structures.trees.BinaryTreeNode;
@@ -11,8 +12,30 @@ public class BinarySearchTreeAlgorithms {
      *
      * @return  List of elements visited inorder
      */
-    public static <T extends Comparable<T>> IList<T> inorderTraversal(BinaryTreeNode<T> root) {
-        return inorderTraversal_recursive(root);
+    public static <T extends Comparable<T>>
+    IList<T> inorderTraversal(BinaryTreeNode<T> root) {
+        IList<T> traversal = new ArrayList<>();
+
+        if (root == null) return null;
+        if (!root.hasLeft() && !root.hasRight()) {
+            traversal.addElement(root.value());
+            return traversal;
+        }
+
+        Stack<BinaryTreeNode<T>> stack = new Stack<>();
+        BinaryTreeNode<T> current = root;
+
+        while (current != null) {
+            if (current.hasLeft()) {
+                stack.push(current);
+                current = current.left();
+            } else if (current.hasRight()) {
+
+            }
+
+        }
+
+        return traversal;
     }
 
     /**

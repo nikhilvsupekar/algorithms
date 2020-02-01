@@ -14,7 +14,7 @@ import java.util.EmptyStackException;
  *
  * @author  Nikhil Supekar
  */
-public class Stack<T extends Comparable<T>> {
+public class Stack<T> {
 
     /**
      * Underlying Linked List data structure.

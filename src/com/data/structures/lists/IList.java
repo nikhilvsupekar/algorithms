@@ -9,7 +9,7 @@ import com.data.exceptions.ListIndexOutOfBoundsException;
  *
  * @author Nikhil Supekar
  */
-public interface IList<T extends Comparable<T>> extends Iterable<T>{
+public interface IList<T> extends Iterable<T>{
 
     /**
      * Get number of elements in the List
