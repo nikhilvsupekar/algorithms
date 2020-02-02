@@ -254,4 +254,41 @@ public class BinarySearchTreeTest {
         assertEquals(root.right().value(), (Integer) 5);
         assertEquals(root.left().right().value(), (Integer) 3);
     }
+
+    @Test
+    public void levelorderTraversal() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(3);
+        tree.add(7);
+        tree.add(9);
+        tree.add(12);
+        tree.add(100);
+
+        IList<Integer> traversal = tree.levelorderTraversal();
+        assertEquals(traversal.getElementByPosition(0), (Integer) 3);
+        assertEquals(traversal.getElementByPosition(1), (Integer) 7);
+        assertEquals(traversal.getElementByPosition(2), (Integer) 9);
+        assertEquals(traversal.getElementByPosition(3), (Integer) 12);
+        assertEquals(traversal.getElementByPosition(4), (Integer) 100);
+
+        tree = new BinarySearchTree<>();
+        tree.add(5);
+        tree.add(3);
+        tree.add(7);
+        tree.add(2);
+        tree.add(4);
+        tree.add(8);
+        tree.add(6);
+        tree.add(1);
+
+        traversal = tree.levelorderTraversal();
+        assertEquals(traversal.getElementByPosition(0), (Integer) 5);
+        assertEquals(traversal.getElementByPosition(1), (Integer) 3);
+        assertEquals(traversal.getElementByPosition(2), (Integer) 7);
+        assertEquals(traversal.getElementByPosition(3), (Integer) 2);
+        assertEquals(traversal.getElementByPosition(4), (Integer) 4);
+        assertEquals(traversal.getElementByPosition(5), (Integer) 6);
+        assertEquals(traversal.getElementByPosition(6), (Integer) 8);
+        assertEquals(traversal.getElementByPosition(7), (Integer) 1);
+    }
 }
