@@ -1,8 +1,10 @@
 package com.algorithms.trees;
 
+import com.data.structures.Queue;
 import com.data.structures.Stack;
 import com.data.structures.lists.ArrayList;
 import com.data.structures.lists.IList;
+import com.data.structures.trees.BinarySearchTree;
 import com.data.structures.trees.BinaryTreeNode;
 
 public class BinarySearchTreeAlgorithms {
@@ -304,5 +306,30 @@ public class BinarySearchTreeAlgorithms {
         }
 
         return fullTraversal;
+    }
+
+
+    public static <T extends Comparable<T>>
+    IList<T> levelOrderTraversal (BinaryTreeNode<T> root) {
+        IList<T> traversal = new ArrayList<>();
+
+        if (root == null) return null;
+        if (!root.hasLeft() && !root.hasRight()) {
+            traversal.addElement(root.value());
+            return traversal;
+        }
+
+        Queue<BinaryTreeNode<T>> queue = new Queue<>();
+        queue.enqueue(root);
+
+        while (!queue.isEmpty()) {
+            BinaryTreeNode<T> current = queue.dequeue();
+            traversal.addElement(current.value());
+
+            if (current.hasLeft()) queue.enqueue(current.left());
+            if (current.hasRight()) queue.enqueue(current.right());
+        }
+
+        return traversal;
     }
 }
