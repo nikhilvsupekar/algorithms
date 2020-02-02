@@ -1,4 +1,4 @@
 package com.data.exceptions;
 
-public class EmptyQueueException extends Exception {
+public class EmptyQueueException extends RuntimeException {
 }

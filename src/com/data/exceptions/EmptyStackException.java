@@ -1,4 +1,4 @@
 package com.data.exceptions;
 
-public class EmptyStackException {
+public class EmptyStackException extends RuntimeException{
 }
