@@ -133,6 +133,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
     }
 
     @Override
+    public IList<T> levelorderTraversal() {
+        return BinarySearchTreeAlgorithms.levelOrderTraversal(root_);
+    }
+
+    @Override
     public BinaryTreeNode<T> root() {
         return root_;
     }
