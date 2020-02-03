@@ -7,6 +7,8 @@ import com.data.structures.lists.IList;
 import com.data.structures.trees.BinarySearchTree;
 import com.data.structures.trees.BinaryTreeNode;
 
+import javax.management.ConstructorParameters;
+
 public class BinarySearchTreeAlgorithms {
 
     /**
@@ -371,5 +373,23 @@ public class BinarySearchTreeAlgorithms {
         while (current.hasRight()) current = current.right();
 
         return current.value();
+    }
+
+    /**
+     * Find the depth of the BST
+     *
+     * @param root      Root of the tree
+     * @param <T>       Template parameter
+     * @return          Depth
+     */
+    public static <T extends Comparable<T>>
+    Integer findDepth(BinaryTreeNode<T> root) {
+        if (root == null) return null;
+        if (!root.hasChildren()) return 0;
+
+        Integer leftDepth = root.hasLeft() ? findDepth(root.left()) : 0;
+        Integer rightDepth = root.hasRight() ? findDepth(root.right()) : 0;
+
+        return (1 + leftDepth > rightDepth ? leftDepth : rightDepth);
     }
 }
