@@ -308,7 +308,13 @@ public class BinarySearchTreeAlgorithms {
         return fullTraversal;
     }
 
-
+    /**
+     * Perform a level-order traversal of the tree
+     *
+     * @param root      Root of the tree
+     * @param <T>       Type parameter
+     * @return          List containing the level-order traversal
+     */
     public static <T extends Comparable<T>>
     IList<T> levelOrderTraversal (BinaryTreeNode<T> root) {
         IList<T> traversal = new ArrayList<>();
@@ -331,5 +337,39 @@ public class BinarySearchTreeAlgorithms {
         }
 
         return traversal;
+    }
+
+    /**
+     * Find the minimum value in a BST
+     *
+     * @param root      Root of the tree
+     * @param <T>       Template parameter
+     * @return          Minimum value
+     */
+    public static <T extends Comparable<T>>
+    T findMin(BinaryTreeNode<T> root) {
+        if (root == null) return null;
+
+        BinaryTreeNode<T> current = root;
+        while (current.hasLeft()) current = current.left();
+
+        return current.value();
+    }
+
+    /**
+     * Find the maximum value in a BST
+     *
+     * @param root      Root of the tree
+     * @param <T>       Template parameter
+     * @return          Maximum value
+     */
+    public static <T extends Comparable<T>>
+    T findMax(BinaryTreeNode<T> root) {
+        if (root == null) return null;
+
+        BinaryTreeNode<T> current = root;
+        while (current.hasRight()) current = current.right();
+
+        return current.value();
     }
 }
