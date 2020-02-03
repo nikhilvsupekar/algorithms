@@ -183,7 +183,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public Integer depth() {
-        return null;
+        return BinarySearchTreeAlgorithms.findDepth(root_);
     }
 
     private BinaryTreeNode<T> searchLogicalParent(T t) {

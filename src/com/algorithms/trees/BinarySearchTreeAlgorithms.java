@@ -390,6 +390,6 @@ public class BinarySearchTreeAlgorithms {
         Integer leftDepth = root.hasLeft() ? findDepth(root.left()) : 0;
         Integer rightDepth = root.hasRight() ? findDepth(root.right()) : 0;
 
-        return (1 + leftDepth > rightDepth ? leftDepth : rightDepth);
+        return (1 + (leftDepth > rightDepth ? leftDepth : rightDepth));
     }
 }
