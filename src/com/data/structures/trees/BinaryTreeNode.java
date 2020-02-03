@@ -53,4 +53,6 @@ public class BinaryTreeNode<T extends Comparable<T>> {
     public boolean hasRight() {
         return right_ != null;
     }
+
+    public boolean hasChildren() { return hasLeft() || hasRight(); }
 }

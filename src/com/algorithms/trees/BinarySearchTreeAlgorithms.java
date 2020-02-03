@@ -19,7 +19,7 @@ public class BinarySearchTreeAlgorithms {
         IList<T> traversal = new ArrayList<>();
 
         if (root == null) return null;
-        if (!root.hasLeft() && !root.hasRight()) {
+        if (!root.hasChildren()) {
             traversal.addElement(root.value());
             return traversal;
         }
@@ -75,7 +75,7 @@ public class BinarySearchTreeAlgorithms {
         IList<T> traversal = new ArrayList<>();
 
         if (root == null) return null;
-        if (!root.hasLeft() && !root.hasRight()) {
+        if (!root.hasChildren()) {
             traversal.addElement(root.value());
             return traversal;
         }
@@ -126,7 +126,7 @@ public class BinarySearchTreeAlgorithms {
         IList<T> traversal = new ArrayList<>();
 
         if (root == null) return null;
-        if (!root.hasLeft() && !root.hasRight()) {
+        if (!root.hasChildren()) {
             traversal.addElement(root.value());
             return traversal;
         }
@@ -320,7 +320,7 @@ public class BinarySearchTreeAlgorithms {
         IList<T> traversal = new ArrayList<>();
 
         if (root == null) return null;
-        if (!root.hasLeft() && !root.hasRight()) {
+        if (!root.hasChildren()) {
             traversal.addElement(root.value());
             return traversal;
         }

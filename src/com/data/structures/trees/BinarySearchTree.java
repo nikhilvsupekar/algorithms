@@ -44,11 +44,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         // node to be deleted is the root node
         if (root_.value().equals(t)) {
 
-            if (root_.left() == null && root_.right() == null) {
+            if (!root_.hasChildren()) {
                 root_ = null;
-            } else if (root_.left() == null && root_.right() != null) {
+            } else if (!root_.hasLeft() && root_.hasRight()) {
                 root_ = root_.right();
-            } else if (root_.left() != null && root_.right() == null) {
+            } else if (root_.hasLeft() && !root_.hasRight()) {
                 root_ = root_.left();
             } else {
                 // go rightmost in the left tree
@@ -74,19 +74,19 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
             BinaryTreeNode<T> node = positionFlag ? prev.left() : prev.right();
 
             // node to be removed is a leaf node
-            if (node.left() == null && node.right() == null) {
+            if (!node.hasChildren()) {
                 if (positionFlag) prev.setLeft(null);
                 else prev.setRight(null);
 
             }
             // left child is null but right is not null
-            else if (node.left() == null && node.right() != null) {
+            else if (!node.hasLeft() && node.hasRight()) {
                 if (positionFlag) prev.setLeft(node.right());
                 else prev.setRight(node.right());
 
             }
             // left child is not null but right is null
-            else if (node.left() != null && node.right() == null){
+            else if (node.hasLeft() && !node.hasRight()){
                 if (positionFlag) prev.setLeft(node.left());
                 else prev.setRight(node.left());
 
