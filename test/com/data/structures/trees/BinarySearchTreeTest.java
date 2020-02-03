@@ -291,4 +291,52 @@ public class BinarySearchTreeTest {
         assertEquals(traversal.getElementByPosition(6), (Integer) 8);
         assertEquals(traversal.getElementByPosition(7), (Integer) 1);
     }
+
+    @Test
+    public void min() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(3);
+        tree.add(7);
+        tree.add(9);
+        tree.add(12);
+        tree.add(100);
+
+        assertEquals(tree.min(), (Integer) 3);
+
+        tree = new BinarySearchTree<>();
+        tree.add(5);
+        tree.add(3);
+        tree.add(7);
+        tree.add(2);
+        tree.add(4);
+        tree.add(8);
+        tree.add(6);
+        tree.add(1);
+
+        assertEquals(tree.min(), (Integer) 1);
+    }
+
+    @Test
+    public void max() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(3);
+        tree.add(7);
+        tree.add(9);
+        tree.add(12);
+        tree.add(100);
+
+        assertEquals(tree.max(), (Integer) 100);
+
+        tree = new BinarySearchTree<>();
+        tree.add(5);
+        tree.add(3);
+        tree.add(7);
+        tree.add(2);
+        tree.add(4);
+        tree.add(8);
+        tree.add(6);
+        tree.add(1);
+
+        assertEquals(tree.max(), (Integer) 8);
+    }
 }
