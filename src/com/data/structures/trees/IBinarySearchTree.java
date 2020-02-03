@@ -87,4 +87,18 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      */
     public void addListElements(IList<T> list);
 
+    /**
+     * Returns the minimum value in the tree
+     *
+     * @return      Minimum value
+     */
+    public T min();
+
+    /**
+     * Returns the maximum value in the tree
+     *
+     * @return      Maximum value
+     */
+    public T max();
+
 }

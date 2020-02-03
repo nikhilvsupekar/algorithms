@@ -171,6 +171,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         }
     }
 
+    @Override
+    public T min() {
+        return null;
+    }
+
+    @Override
+    public T max() {
+        return null;
+    }
+
     private BinaryTreeNode<T> searchLogicalParent(T t) {
         if (root_ == null) return null;
         if (root_.value().equals(t)) return null;
