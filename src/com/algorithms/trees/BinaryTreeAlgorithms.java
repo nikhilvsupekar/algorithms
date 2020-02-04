@@ -14,7 +14,7 @@ public class BinaryTreeAlgorithms {
     public static <T extends Comparable<T>>
     Integer findDepth(BinaryTreeNode<T> root) {
         if (root == null) return null;
-        if (!root.hasChildren()) return 0;
+        if (root.isLeaf()) return 0;
 
         Integer leftDepth = root.hasLeft() ? findDepth(root.left()) : 0;
         Integer rightDepth = root.hasRight() ? findDepth(root.right()) : 0;
@@ -32,7 +32,7 @@ public class BinaryTreeAlgorithms {
     public static <T extends Comparable<T>>
     Integer getNodeCount(BinaryTreeNode<T> root) {
         if (root == null) return null;
-        if (!root.hasChildren()) return 1;
+        if (root.isLeaf()) return 1;
 
         Integer leftChildren = root.hasLeft() ? getNodeCount(root.left()) : 0;
         Integer rightChildren = root.hasRight() ? getNodeCount(root.right()) : 0;
