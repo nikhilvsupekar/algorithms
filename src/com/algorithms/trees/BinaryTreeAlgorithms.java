@@ -49,12 +49,12 @@ public class BinaryTreeAlgorithms {
      * @return          Leaf count
      */
     public static <T extends Comparable<T>>
-    Integer getChildCount(BinaryTreeNode<T> root) {
+    Integer getLeafCount(BinaryTreeNode<T> root) {
         if (root == null) return null;
         if (root.isLeaf()) return 1;
 
-        Integer leftLeaves = (root.hasLeft() ? getChildCount(root.left()) : 0);
-        Integer rightLeaves = (root.hasRight() ? getChildCount(root.right()) : 0);
+        Integer leftLeaves = (root.hasLeft() ? getLeafCount(root.left()) : 0);
+        Integer rightLeaves = (root.hasRight() ? getLeafCount(root.right()) : 0);
 
         return leftLeaves + rightLeaves;
     }

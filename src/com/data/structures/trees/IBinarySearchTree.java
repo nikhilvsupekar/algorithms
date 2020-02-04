@@ -116,4 +116,11 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
      */
     public Integer nodeCount();
 
+    /**
+     * Returns the number of leaves in the tree.
+     *
+      * @return Leaf count
+     */
+    public Integer leafCount();
+
 }

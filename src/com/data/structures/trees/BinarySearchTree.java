@@ -192,6 +192,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         return BinaryTreeAlgorithms.getNodeCount(root_);
     }
 
+    @Override
+    public Integer leafCount() {
+        return BinaryTreeAlgorithms.getLeafCount(root_);
+    }
+
     private BinaryTreeNode<T> searchLogicalParent(T t) {
         if (root_ == null) return null;
         if (root_.value().equals(t)) return null;
