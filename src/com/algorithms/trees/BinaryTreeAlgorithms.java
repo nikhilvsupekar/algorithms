@@ -21,4 +21,22 @@ public class BinaryTreeAlgorithms {
 
         return (1 + (leftDepth > rightDepth ? leftDepth : rightDepth));
     }
+
+    /**
+     * Find the number of nodes below a node (including the root node)
+     *
+     * @param root      Root of the sub tree
+     * @param <T>       Template parameter
+     * @return          Node count
+     */
+    public static <T extends Comparable<T>>
+    Integer getNodeCount(BinaryTreeNode<T> root) {
+        if (root == null) return null;
+        if (!root.hasChildren()) return 0;
+
+        Integer leftChildren = root.hasLeft() ? 1 + getNodeCount(root.left()) : 0;
+        Integer rightChildren = root.hasRight() ? 1 + getNodeCount(root.right()) : 0;
+
+        return 1 + leftChildren + rightChildren;
+    }
 }
