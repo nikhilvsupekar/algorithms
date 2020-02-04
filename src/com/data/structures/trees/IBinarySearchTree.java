@@ -104,8 +104,16 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
     /**
      * Returns the depth of the tree.
      * Depth is defined as the maximum number of edges in a path between the root and leaves
-     * @return
+     *
+     * @return  Tree depth
      */
     public Integer depth();
+
+    /**
+     * Returns the number of nodes in the tree.
+     *
+     * @return  Node count
+     */
+    public Integer nodeCount();
 
 }
