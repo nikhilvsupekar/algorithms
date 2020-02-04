@@ -387,4 +387,28 @@ public class BinarySearchTreeTest {
 
         assertEquals((Integer) 8, tree.nodeCount());
     }
+
+    @Test
+    public void leafCount() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.add(3);
+        tree.add(7);
+        tree.add(9);
+        tree.add(12);
+        tree.add(100);
+
+        assertEquals((Integer) 1, tree.leafCount());
+
+        tree = new BinarySearchTree<>();
+        tree.add(5);
+        tree.add(3);
+        tree.add(7);
+        tree.add(2);
+        tree.add(4);
+        tree.add(8);
+        tree.add(6);
+        tree.add(1);
+
+        assertEquals((Integer) 4, tree.leafCount());
+    }
 }
