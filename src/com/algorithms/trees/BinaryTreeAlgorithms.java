@@ -1,5 +1,6 @@
 package com.algorithms.trees;
 
+import com.data.structures.trees.BinarySearchTree;
 import com.data.structures.trees.BinaryTreeNode;
 
 public class BinaryTreeAlgorithms {
@@ -38,5 +39,23 @@ public class BinaryTreeAlgorithms {
         Integer rightChildren = root.hasRight() ? getNodeCount(root.right()) : 0;
 
         return 1 + leftChildren + rightChildren;
+    }
+
+    /**
+     * Find the number of leaves below a node
+     *
+     * @param root      Root of the sub tree
+     * @param <T>       Template parameter
+     * @return          Leaf count
+     */
+    public static <T extends Comparable<T>>
+    Integer getChildCount(BinaryTreeNode<T> root) {
+        if (root == null) return null;
+        if (root.isLeaf()) return 1;
+
+        Integer leftLeaves = (root.hasLeft() ? getChildCount(root.left()) : 0);
+        Integer rightLeaves = (root.hasRight() ? getChildCount(root.right()) : 0);
+
+        return leftLeaves + rightLeaves;
     }
 }
