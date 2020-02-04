@@ -1,6 +1,7 @@
 package com.data.structures.trees;
 
 import com.algorithms.trees.BinarySearchTreeAlgorithms;
+import com.algorithms.trees.BinaryTreeAlgorithms;
 import com.data.structures.lists.IList;
 
 public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchTree<T>{
@@ -183,7 +184,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public Integer depth() {
-        return BinarySearchTreeAlgorithms.findDepth(root_);
+        return BinaryTreeAlgorithms.findDepth(root_);
     }
 
     private BinaryTreeNode<T> searchLogicalParent(T t) {
