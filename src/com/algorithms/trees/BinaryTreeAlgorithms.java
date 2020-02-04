@@ -32,10 +32,10 @@ public class BinaryTreeAlgorithms {
     public static <T extends Comparable<T>>
     Integer getNodeCount(BinaryTreeNode<T> root) {
         if (root == null) return null;
-        if (!root.hasChildren()) return 0;
+        if (!root.hasChildren()) return 1;
 
-        Integer leftChildren = root.hasLeft() ? 1 + getNodeCount(root.left()) : 0;
-        Integer rightChildren = root.hasRight() ? 1 + getNodeCount(root.right()) : 0;
+        Integer leftChildren = root.hasLeft() ? getNodeCount(root.left()) : 0;
+        Integer rightChildren = root.hasRight() ? getNodeCount(root.right()) : 0;
 
         return 1 + leftChildren + rightChildren;
     }
